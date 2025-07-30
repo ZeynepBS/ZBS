@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ablama Özel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #f7f0e8, #e0d4f5);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #5d3c81;
+    }
+
+    .counter {
+      font-size: 1.2rem;
+      background: #fff6f0;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 40px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #6a6184;
+      text-align: center;
+      max-width: 700px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      .counter {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ablamın Hayattaki Zamanı</h1>
+  <div class="counter" id="counter">Yükleniyor...</div>
+
+  <div class="video-wrapper">
+    <iframe 
+      src="https://drive.google.com/file/d/17M8AmwmT2fMAOmujdL97KKaGGJGY7-Z-/preview" 
+      allow="autoplay" allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="quote">“…gibi de insan ne yaşadığını bilir.”</p>
+
+  <script>
+    const birthDate = new Date("1992-07-31T02:30:00+03:00");
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - birthDate;
+
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours   = Math.floor(minutes / 60);
+      const days    = Math.floor(hours / 24);
+      const years   = Math.floor(days / 365.25);
+
+      const remainingDays = days % 365.25;
+      const remainingHours = hours % 24;
+      const remainingMinutes = minutes % 60;
+      const remainingSeconds = seconds % 60;
+
+      document.getElementById("counter").innerText =
+        `${years} yıl, ${Math.floor(remainingDays)} gün, ${remainingHours} saat, ${remainingMinutes} dakika, ${remainingSeconds} saniyedir hayattasın abla 💜`;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+  </script>
+
+</body>
+</html>
