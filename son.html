@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zamanın İzinde: Zeynep Berna Şahin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Barlow', sans-serif;
+      background: linear-gradient(135deg, #f3eaf7, #d6c8e6);
+      color: #4a3f63;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .counter {
+      background: #ede5f3;
+      padding: 30px 40px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(180, 154, 220, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 700px;
+      margin-bottom: 40px;
+      color: #5b4a85;
+    }
+    .time-box {
+      text-align: center;
+      min-width: 90px;
+    }
+    .time-box .number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #7b66af;
+    }
+    .time-box .label {
+      margin-top: 6px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #8b7db1;
+      letter-spacing: 0.06em;
+    }
+    .total-time {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #6e5f91;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 50px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .counter {
+        gap: 15px;
+        padding: 20px;
+      }
+      .time-box {
+        min-width: 60px;
+      }
+      .time-box .number {
+        font-size: 2rem;
+      }
+      .time-box .label {
+        font-size: 0.9rem;
+      }
+      .total-time {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Zamanın İzinde: Zeynep Berna Şahin</h1>
+
+  <div class="counter" id="counter">
+    <!-- Sayaç kutucukları buraya JS ile gelecek -->
+  </div>
+  <div class="total-time" id="totalTime">
+    <!-- Toplam geçen süre buraya gelecek -->
+  </div>
+
+  <div class="video-wrapper">
+    <iframe 
+      src="https://drive.google.com/file/d/17M8AmwmT2fMAOmujdL97KKaGGJGY7-Z-/preview" 
+      allow="autoplay" allowfullscreen muted>
+    </iframe>
+  </div>
+
+  <!-- Arka planda görünmez müzik -->
+  <iframe 
+    width="0" height="0" 
+    src="https://www.youtube.com/embed/jUeHD5pGKaI?autoplay=1&loop=1&playlist=jUeHD5pGKaI" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
+  </iframe>
+
+  <script>
+    const birthDate = new Date(1992, 6, 31, 2, 30, 0); // 31 Temmuz 1992 02:30
+
+    function updateCounter() {
+      const now = new Date();
+      const diffMs = now - birthDate;
+
+      // Zaman hesapları
+      const seconds = Math.floor(diffMs / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      const years = Math.floor(days / 365.25);
+
+      const remDays = Math.floor(days % 365.25);
+      const remHours = hours % 24;
+      const remMinutes = minutes % 60;
+      const remSeconds = seconds % 60;
+
+      // Toplam süre hesapları
+      const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const totalMinutes = Math.floor(diffMs / (1000 * 60));
+      const totalSeconds = seconds;
+
+      // Sayaç kutucuklarını oluştur
+      const counterDiv = document.getElementById("counter");
+      counterDiv.innerHTML = `
+        <div class="time-box"><div class="number">${years}</div><div class="label">YIL</div></div>
+        <div class="time-box"><div class="number">${remDays}</div><div class="label">GÜN</div></div>
+        <div class="time-box"><div class="number">${remHours}</div><div class="label">SAAT</div></div>
+        <div class="time-box"><div class="number">${remMinutes}</div><div class="label">DAKİKA</div></div>
+        <div class="time-box"><div class="number">${remSeconds}</div><div class="label">SANİYE</div></div>
+      `;
+
+      // Toplam süre metni
+      const totalTimeDiv = document.getElementById("totalTime");
+      totalTimeDiv.textContent = `Toplam Geçen Süre: ${totalHours.toLocaleString()} saat | ${totalMinutes.toLocaleString()} dakika | ${totalSeconds.toLocaleString()} saniye`;
+
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+  </script>
+</body>
+</html>
