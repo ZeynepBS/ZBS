@@ -230,7 +230,7 @@
     </div>
 
     <audio id="musicPlayer" preload="none" src="ablam_sarkisi.mp3"></audio>
-    <button id="playPauseBtn">Müziği Başlat</button>
+    <button id="playPauseBtn">Şarkıyı Başlat</button>
   </div>
 
   <div class="zeytin-header">Zeytin</div>
@@ -293,10 +293,10 @@
     btn.onclick = () => {
       if (music.paused) {
         music.play();
-        btn.textContent = "Müziği Durdur";
+        btn.textContent = "Şarkıyı Durdur";
       } else {
         music.pause();
-        btn.textContent = "Müziği Başlat";
+        btn.textContent = "Şarkıyı Başlat";
       }
     };
 
