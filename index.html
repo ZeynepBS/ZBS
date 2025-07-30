@@ -115,6 +115,20 @@
     #playPauseBtn:hover {
       background: #5e4a94;
     }
+    .lyrics-box {
+      background: #d6c8e6cc;
+      color: #4a3f63;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-top: 10px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      max-width: 320px;
+      text-align: center;
+      user-select: none;
+    }
     @media (max-width: 600px) {
       h1 {
         font-size: 1.8rem;
@@ -159,8 +173,17 @@
       ></iframe>
     </div>
 
+    <div class="lyrics-box">
+      <p>
+        “Yaralı ama dimdik duran;<br/>
+        Kırık terazisinde hayatı tartan,<br/>
+        Kimseye eyvallah etmeyen,<br/>
+        Bir savaşçının şarkısı.”
+      </p>
+    </div>
+
     <h2>Müzik</h2>
-    <audio id="musicPlayer" preload="none" src="https://raw.githubusercontent.com/ZeynepBS/ZBS/main/ablam_sarkisi.mp3"></audio>
+    <audio id="musicPlayer" preload="none" src="https://github.com/ZeynepBS/ZBS/raw/main/ablam_sarkisi.mp3"></audio>
     <button id="playPauseBtn">Müziği Başlat</button>
   </div>
 
