@@ -15,18 +15,19 @@
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      min-height: 100vh;
       box-sizing: border-box;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
+
     h1 {
       font-weight: 700;
       font-size: 2.5rem;
       margin-bottom: 30px;
       text-align: center;
     }
+
     .counter {
       background: #ede5f3;
       padding: 30px 40px;
@@ -36,71 +37,82 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      max-width: 700px;
       margin-bottom: 40px;
       color: #5b4a85;
     }
+
     .time-box {
       text-align: center;
       min-width: 90px;
     }
-    .time-box .number {
+
+    .number {
       font-size: 2.8rem;
       font-weight: 700;
       color: #7b66af;
     }
-    .time-box .label {
+
+    .label {
       margin-top: 6px;
       font-size: 1.1rem;
       font-weight: 500;
       color: #8b7db1;
       letter-spacing: 0.06em;
     }
+
     .total-time {
-      margin-top: 20px;
+      margin: 20px 0 40px;
       font-size: 1rem;
       font-weight: 500;
       color: #6e5f91;
       text-align: center;
-      max-width: 600px;
-      line-height: 1.4;
       font-style: italic;
-      margin-bottom: 40px;
     }
+
     .media-container {
-      width: 320px;
+      width: 100%;
+      max-width: 380px;
       background: #b497bd;
       border-radius: 12px;
-      padding: 12px 20px 20px;
+      padding: 20px;
       box-shadow: 0 4px 10px rgba(180, 140, 200, 0.3);
       color: white;
       text-align: center;
       margin-bottom: 40px;
     }
-    .media-container h2 {
-      margin: 0 0 12px 0;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
+
     .video-container {
       width: 100%;
-      height: 180px;
+      height: 200px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
       margin-bottom: 20px;
     }
+
     .video-container iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
+    .lyrics-box {
+      background: #d6c8e6cc;
+      color: #4a3f63;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-radius: 12px;
+    }
+
     audio {
       width: 100%;
-      outline: none;
-      border-radius: 6px;
       margin-bottom: 12px;
+      border-radius: 6px;
     }
+
     #playPauseBtn {
       background: #7b66af;
       border: none;
@@ -110,78 +122,91 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s ease;
-      font-family: 'Barlow', sans-serif;
     }
+
     #playPauseBtn:hover {
       background: #5e4a94;
     }
-    .lyrics-box {
-      background: #d6c8e6cc;
-      color: #4a3f63;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      margin-top: 10px;
-      padding: 15px 20px;
-      border-radius: 12px;
-      max-width: 320px;
-      text-align: center;
-      user-select: none;
-    }
-    .carousel {
-      overflow-x: auto;
-      white-space: nowrap;
-      max-width: 100%;
-      margin: 20px auto 40px auto;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(123, 102, 175, 0.2);
+
+    .zeytin-header {
+      margin-top: 50px;
       background: #ece5f4;
+      padding: 10px 25px;
+      border-radius: 14px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #5b4a85;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-    .carousel-track {
-      display: inline-flex;
+
+    .carousel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
-      padding: 10px 20px;
+      margin-top: 20px;
+      margin-bottom: 40px;
     }
-    .carousel-track img {
-      height: 120px;
-      border-radius: 12px;
+
+    .carousel img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.08);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+
+    .lightbox .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
       user-select: none;
-      flex-shrink: 0;
+      padding: 10px;
     }
-    .carousel-track img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 14px rgba(123, 102, 175, 0.5);
-    }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      .counter {
-        gap: 15px;
-        padding: 20px;
-      }
-      .time-box {
-        min-width: 60px;
-      }
-      .time-box .number {
-        font-size: 2rem;
-      }
-      .time-box .label {
-        font-size: 0.9rem;
-      }
-      .total-time {
-        font-size: 0.9rem;
-      }
-      .media-container {
-        width: 90%;
-        margin-bottom: 30px;
-      }
+
+    .lightbox .left { left: 30px; }
+    .lightbox .right { right: 30px; }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
     }
   </style>
 </head>
@@ -195,43 +220,33 @@
   <div class="media-container">
     <h2>İnsan ne yaşadığını bilmez mi Abla?</h2>
     <div class="video-container">
-      <iframe 
-        src="https://drive.google.com/file/d/17M8AmwmT2fMAOmujdL97KKaGGJGY7-Z-/preview"
-        allow="autoplay"
-        allowfullscreen
-      ></iframe>
+      <iframe src="https://drive.google.com/file/d/17M8AmwmT2fMAOmujdL97KKaGGJGY7-Z-/preview" allow="autoplay"></iframe>
     </div>
 
     <div class="lyrics-box">
-      <p>
-        “Yaralı ama dimdik duran;<br/>
-        Kırık terazisinde hayatı tartan,<br/>
-        Kimseye eyvallah etmeyen,<br/>
-        Bir savaşçının şarkısı.”
-      </p>
+      “Yaralı ama dimdik duran;<br/>
+      Kırık terazisinde hayatı tartan,<br/>
+      Kimseye eyvallah etmeyen,<br/>
+      Bir savaşçının şarkısı.”
     </div>
 
     <audio id="musicPlayer" preload="none" src="https://github.com/ZeynepBS/ZBS/raw/main/ablam_sarkisi.mp3"></audio>
     <button id="playPauseBtn">Müziği Başlat</button>
+  </div>
 
-    <h2 style="margin-top: 40px;">Zeytin</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/1.jpg" alt="Zeytin 1" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/2.jpg" alt="Zeytin 2" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/3.jpg" alt="Zeytin 3" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/4.jpg" alt="Zeytin 4" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/5.jpg" alt="Zeytin 5" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/6.jpg" alt="Zeytin 6" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/7.jpg" alt="Zeytin 7" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/8.jpg" alt="Zeytin 8" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/9.jpg" alt="Zeytin 9" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/10.jpg" alt="Zeytin 10" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/11.jpg" alt="Zeytin 11" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/12.jpg" alt="Zeytin 12" />
-        <img src="https://github.com/ZeynepBS/ZBS/raw/main/13.jpg" alt="Zeytin 13" />
-      </div>
-    </div>
+  <div class="zeytin-header">Zeytin</div>
+
+  <div class="carousel" id="carousel">
+    <!-- 13 fotoğraf -->
+    ${[...Array(13).keys()].map(i => `<img src="https://github.com/ZeynepBS/ZBS/raw/main/${i+1}.jpg" data-index="${i}">`).join('')}
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">×</span>
+    <span class="arrow left" onclick="prevImage()">‹</span>
+    <img id="lightboxImage" src="">
+    <span class="arrow right" onclick="nextImage()">›</span>
   </div>
 
   <script>
@@ -262,22 +277,53 @@
       `;
       document.getElementById("totalTime").textContent = `Toplam Geçen Süre: ${totalHours.toLocaleString()} saat | ${totalMinutes.toLocaleString()} dakika | ${totalSeconds.toLocaleString()} saniye`;
     }
-
-    updateCounter();
     setInterval(updateCounter, 1000);
+    updateCounter();
 
-    // Müzik kontrol
-    const musicPlayer = document.getElementById('musicPlayer');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    playPauseBtn.addEventListener('click', () => {
-      if (musicPlayer.paused) {
-        musicPlayer.play();
-        playPauseBtn.textContent = 'Müziği Durdur';
+    // Müzik kontrolü
+    const music = document.getElementById("musicPlayer");
+    const btn = document.getElementById("playPauseBtn");
+    btn.onclick = () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "Müziği Durdur";
       } else {
-        musicPlayer.pause();
-        playPauseBtn.textContent = 'Müziği Başlat';
+        music.pause();
+        btn.textContent = "Müziği Başlat";
       }
+    };
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const images = document.querySelectorAll("#carousel img");
+    let currentIndex = 0;
+
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        currentIndex = parseInt(img.dataset.index);
+        openLightbox(currentIndex);
+      });
     });
+
+    function openLightbox(index) {
+      lightboxImage.src = images[index].src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImage.src = images[currentIndex].src;
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImage.src = images[currentIndex].src;
+    }
   </script>
 
 </body>
