@@ -65,8 +65,44 @@
       max-width: 600px;
       line-height: 1.4;
       font-style: italic;
+      margin-bottom: 40px;
     }
-    /* Responsive */
+    .media-container {
+      width: 320px;
+      background: #b497bd; /* lavanta */
+      border-radius: 12px;
+      padding: 12px 20px 20px;
+      box-shadow: 0 4px 10px rgba(180, 140, 200, 0.3);
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .media-container h2 {
+      margin: 0 0 12px 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+      border-radius: 6px;
+    }
     @media (max-width: 600px) {
       h1 {
         font-size: 1.8rem;
@@ -87,6 +123,10 @@
       .total-time {
         font-size: 0.9rem;
       }
+      .media-container {
+        width: 90%;
+        margin-bottom: 30px;
+      }
     }
   </style>
 </head>
@@ -94,11 +134,24 @@
 
   <h1>Zamanın İzinde: Zeynep Berna Şahin</h1>
 
-  <div class="counter" id="counter">
-    <!-- Sayaç kutucukları JS ile gelecek -->
-  </div>
-  <div class="total-time" id="totalTime">
-    <!-- Toplam süre JS ile gelecek -->
+  <div class="counter" id="counter"></div>
+  <div class="total-time" id="totalTime"></div>
+
+  <div class="media-container">
+    <h2>Video</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/jUeHD5pGKaI" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        ></iframe>
+    </div>
+    <h2>Müzik</h2>
+    <!-- Buraya mp3 linki koyabilirsin -->
+    <audio controls preload="none">
+      <source src="https://cdn.pixabay.com/download/audio/2021/10/21/audio_3f62d96e93.mp3?filename=relaxing-piano-10824.mp3" type="audio/mpeg">
+      Tarayıcınız audio elementini desteklemiyor.
+    </audio>
   </div>
 
   <script>
@@ -139,5 +192,6 @@
     updateCounter();
     setInterval(updateCounter, 1000);
   </script>
+
 </body>
 </html>
