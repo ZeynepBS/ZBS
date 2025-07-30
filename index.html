@@ -129,6 +129,35 @@
       text-align: center;
       user-select: none;
     }
+    .carousel {
+      overflow-x: auto;
+      white-space: nowrap;
+      max-width: 100%;
+      margin: 20px auto 40px auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(123, 102, 175, 0.2);
+      background: #ece5f4;
+    }
+    .carousel-track {
+      display: inline-flex;
+      gap: 12px;
+      padding: 10px 20px;
+    }
+    .carousel-track img {
+      height: 120px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .carousel-track img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(123, 102, 175, 0.5);
+    }
     @media (max-width: 600px) {
       h1 {
         font-size: 1.8rem;
@@ -182,54 +211,64 @@
       </p>
     </div>
 
-    <h2>Müzik</h2>
     <audio id="musicPlayer" preload="none" src="https://github.com/ZeynepBS/ZBS/raw/main/ablam_sarkisi.mp3"></audio>
     <button id="playPauseBtn">Müziği Başlat</button>
+
+    <h2 style="margin-top: 40px;">Zeytin</h2>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/1.jpg" alt="Zeytin 1" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/2.jpg" alt="Zeytin 2" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/3.jpg" alt="Zeytin 3" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/4.jpg" alt="Zeytin 4" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/5.jpg" alt="Zeytin 5" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/6.jpg" alt="Zeytin 6" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/7.jpg" alt="Zeytin 7" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/8.jpg" alt="Zeytin 8" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/9.jpg" alt="Zeytin 9" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/10.jpg" alt="Zeytin 10" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/11.jpg" alt="Zeytin 11" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/12.jpg" alt="Zeytin 12" />
+        <img src="https://github.com/ZeynepBS/ZBS/raw/main/13.jpg" alt="Zeytin 13" />
+      </div>
+    </div>
   </div>
 
   <script>
-    // Sayaç kodu
-    const birthDate = new Date(1992, 6, 31, 2, 30, 0); // 31 Temmuz 1992 02:30
-
+    // Sayaç
+    const birthDate = new Date(1992, 6, 31, 2, 30, 0);
     function updateCounter() {
       const now = new Date();
       const diffMs = now - birthDate;
-
       const seconds = Math.floor(diffMs / 1000);
       const minutes = Math.floor(seconds / 60);
       const hours = Math.floor(minutes / 60);
       const days = Math.floor(hours / 24);
       const years = Math.floor(days / 365.25);
-
       const remDays = Math.floor(days % 365.25);
       const remHours = hours % 24;
       const remMinutes = minutes % 60;
       const remSeconds = seconds % 60;
-
       const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
       const totalMinutes = Math.floor(diffMs / (1000 * 60));
       const totalSeconds = seconds;
 
-      const counterDiv = document.getElementById("counter");
-      counterDiv.innerHTML = `
+      document.getElementById("counter").innerHTML = `
         <div class="time-box"><div class="number">${years}</div><div class="label">YIL</div></div>
         <div class="time-box"><div class="number">${remDays}</div><div class="label">GÜN</div></div>
         <div class="time-box"><div class="number">${remHours}</div><div class="label">SAAT</div></div>
         <div class="time-box"><div class="number">${remMinutes}</div><div class="label">DAKİKA</div></div>
         <div class="time-box"><div class="number">${remSeconds}</div><div class="label">SANİYE</div></div>
       `;
-
-      const totalTimeDiv = document.getElementById("totalTime");
-      totalTimeDiv.textContent = `Toplam Geçen Süre: ${totalHours.toLocaleString()} saat | ${totalMinutes.toLocaleString()} dakika | ${totalSeconds.toLocaleString()} saniye`;
+      document.getElementById("totalTime").textContent = `Toplam Geçen Süre: ${totalHours.toLocaleString()} saat | ${totalMinutes.toLocaleString()} dakika | ${totalSeconds.toLocaleString()} saniye`;
     }
 
     updateCounter();
     setInterval(updateCounter, 1000);
 
-    // Müzik buton kontrolü
+    // Müzik kontrol
     const musicPlayer = document.getElementById('musicPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
-
     playPauseBtn.addEventListener('click', () => {
       if (musicPlayer.paused) {
         musicPlayer.play();
